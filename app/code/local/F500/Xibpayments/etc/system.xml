@@ -1,0 +1,185 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento Xib|payments Payment extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   F500
+ * @package    F500_Xibpayments
+ * @author     Ramon de la Fuente, <ramon@future500.nl>
+ * @copyright  Copyright (c) 2009 Future500 BV, the Netherlands
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+   <sections>
+        <payment>
+            <groups>
+                <xibpayments translate="label" module="xibpayments">
+                    <label>Xib|payments</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+		                    <comment><![CDATA[<a href="https://www.xibpayments.com/" target="_blank">Apply for an account</a>]]></comment>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Text shown in the checkout screen</comment>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <!-- <gateway_version translate="label">
+                            <label>Version</label>
+                            <frontend_type>select</frontend_type>
+                            <comment>Gateway version</comment>
+                            <source_model>xibpayments/system_gatewayversion</source_model>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </gateway_version> -->
+                        <transaction_type translate="label">
+                            <label>Modus</label>
+                            <frontend_type>select</frontend_type>
+                            <comment>Live, Test or Debug mode (debug writes a log, see 'Debug Log' setting below)</comment>
+                            <source_model>xibpayments/system_transactiontype</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </transaction_type>
+                        <site_id translate="label">
+                            <label>Site Id</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[Site ID from your account at <a href="https://merchants.xibpayments.com/" target="_blank">Xib|payments</a>]]></comment>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </site_id>
+                        <password_key translate="label">
+                            <label>Password Key</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[Password entered in the backend at <a href="https://merchants.xibpayments.com/" target="_blank">Xib|payments</a>]]></comment>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </password_key>
+                        <options translate="label">
+                            <label>Payment Option</label>
+                            <frontend_type>select</frontend_type>
+                            <comment>Link directly to a payment option</comment>
+                            <source_model>xibpayments/system_paymentoptions</source_model>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </options>
+                        <order_description translate="label">
+                            <label>Order description</label>
+                            <frontend_type>text</frontend_type>
+		                    <comment><![CDATA[Description to show the customer in the Xibpayments screen. Variables:<br /><b>%id%</b> = Order ID]]></comment>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_description>                        
+                        <order_status translate="label">
+                            <label>New order status</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status</source_model>
+                            <sort_order>31</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </order_status>
+                        <order_status_paid translate="label">
+                            <label>Paid order status</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status</source_model>
+                            <sort_order>32</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </order_status_paid>
+                        <order_status_paid_createinvoice translate="label">
+                            <label>Automatically create invoice</label>
+                            <frontend_type>select</frontend_type>
+		                    <comment>If set to no, the module does NOT create an invoice automatically when payment is received.</comment>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>33</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </order_status_paid_createinvoice>
+                        <order_status_failed translate="label">
+                            <label>Failed order status</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status</source_model>
+                            <sort_order>34</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </order_status_failed>
+                         <allowspecific translate="label">
+                            <label>Payment from applicable countries</label>
+                            <frontend_type>allowspecific</frontend_type>
+                            <sort_order>50</sort_order>
+                            <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allowspecific>
+                        <specificcountry translate="label">
+                            <label>Payment from Specific countries</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>51</sort_order>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </specificcountry>
+                        <sort_order translate="label">
+                            <label>Sort order</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+                        <debug_log translate="label">
+                            <label>Debug Log</label>
+                            <comment>Log name for debug logging (written in /var/log). Enable System/Developer/Log for this to work.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>101</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </debug_log>
+                    </fields>
+                </xibpayments>
+            </groups>
+        </payment>
+    </sections>
+</config>

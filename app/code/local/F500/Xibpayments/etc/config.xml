@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento Xib|payments Payment extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   F500
+ * @package    F500_Xibpayments
+ * @author     Ramon de la Fuente, <ramon@future500.nl>
+ * @copyright  Copyright (c) 2009 Future500 BV, the Netherlands
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <F500_Xibpayments>
+            <version>1.0.1</version>
+        </F500_Xibpayments>
+    </modules>
+    <global>
+        <models>
+            <xibpayments>
+                <class>F500_Xibpayments_Model</class>
+            </xibpayments>
+        </models>
+        <helpers>
+        	<xibpayments>
+            	<class>F500_Xibpayments_Helper</class>	
+            </xibpayments>
+        </helpers>
+        <resources>
+            <xibpayments_setup>
+                <setup>
+                    <module>F500_Xibpayments</module>
+                    <class>F500_Xibpayments_Model_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </xibpayments_setup>
+            <xibpayments_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </xibpayments_write>
+            <xibpayments_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </xibpayments_read>
+        </resources>
+        <blocks>
+            <xibpayments><class>F500_Xibpayments_Block</class></xibpayments>
+        </blocks>
+    </global>
+
+    <frontend>
+        <secure_url>
+            <xibpayments>/xibpayments</xibpayments>
+        </secure_url>
+        <routers>
+            <xibpayments>
+                <use>standard</use>
+                <args>
+                    <module>F500_Xibpayments</module>
+                    <frontName>xibpayments</frontName>
+                </args>
+            </xibpayments>
+        </routers>
+        <translate>
+            <modules>
+                <F500_Xibpayments>
+                    <files>
+                        <default>F500_Xibpayments.csv</default>
+                    </files>
+                </F500_Xibpayments>
+            </modules>
+        </translate>
+    </frontend>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <F500_Xibpayments>
+                    <files>
+                        <default>F500_Xibpayments.csv</default>
+                    </files>
+                </F500_Xibpayments>
+            </modules>
+        </translate>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <xibpayments>
+                                            <title>Xib|payments Section</title>
+                                        </xibpayments>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+
+    <default>
+        <payment>
+            <xibpayments>
+                  <model>xibpayments/standard</model>
+                  <title>Xib|payments System</title>
+                  <transaction_type>T</transaction_type>
+                  <order_status>Pending</order_status>
+                  <order_status_paid>Processing</order_status_paid>
+                  <order_status_paid_createinvoice>1</order_status_paid_createinvoice>
+                  <order_status_failed>Cancelled</order_status_failed>
+                  <order_description>order %id%</order_description>
+                  <debug_log>xibpayments.log</debug_log>
+            </xibpayments>
+        </payment>
+    </default>
+</config>
