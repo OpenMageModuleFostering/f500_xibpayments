@@ -37,14 +37,14 @@ if ( in_array('', $options) ) {
 <?
 } else {
 ?>
-<fieldset class="form-list" onclick="document.getElementById('p_method_xibpayments').checked = true;payment.switchMethod('xibpayments');">
+<fieldset class="form-list">
     <ul id="payment_form_<?php echo $_code ?>">
     <?php
         foreach ( $options as $option ) {
     ?>
         <li>
             <?php 
-                echo '<label><input type="radio" id="p_method_xibpayments_option_' . $option . '" name="payment[xibpayments_option]" value="' . $option . '" ' . ( ($selected_option == $option)||(count($options)==1) ? 'checked="checked"' : '') . '> ' . ( '' !== ($optiontitle = $this->getOptionTitle($option)) ? $optiontitle : $this->__($option)) . '</label>'; 
+                echo '<label onclick="document.getElementById(\'p_method_xibpayments\').checked = true;payment.switchMethod(\'xibpayments\');"><input type="radio" id="p_method_xibpayments_option_' . $option . '" name="payment[xibpayments_option]" value="' . $option . '" ' . ( ($selected_option == $option)||(count($options)==1) ? 'checked="checked"' : '') . '> ' . ( '' !== ($optiontitle = $this->getOptionTitle($option)) ? $optiontitle : $this->__($option)) . '</label>'; 
                 if ( $option == 'ideal' ) {
                     $result = '<select  style="margin-left: 10px;" name="payment[xibpayments_bank]" onchange="document.getElementById(\'p_method_xibpayments\').checked = true;document.getElementById(\'p_method_xibpayments_option_' . $option . '\').checked = true; payment.switchMethod(\'xibpayments\');">';
                     $result .= '<option value="">' . $this->__('Select your bank') . '</option>';

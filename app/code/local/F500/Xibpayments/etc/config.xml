@@ -20,7 +20,7 @@
 <config>
     <modules>
         <F500_Xibpayments>
-            <version>1.0.4</version>
+            <version>1.0.5</version>
         </F500_Xibpayments>
     </modules>
     <global>
