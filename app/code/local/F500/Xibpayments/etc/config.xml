@@ -20,7 +20,7 @@
 <config>
     <modules>
         <F500_Xibpayments>
-            <version>1.0.2</version>
+            <version>1.0.3</version>
         </F500_Xibpayments>
     </modules>
     <global>
@@ -121,6 +121,7 @@
                   <model>xibpayments/standard</model>
                   <title>Xib|payments System</title>
                   <transaction_type>T</transaction_type>
+                  <options></options>
                   <order_status>Pending</order_status>
                   <order_status_paid>Processing</order_status_paid>
                   <order_status_paid_createinvoice>1</order_status_paid_createinvoice>

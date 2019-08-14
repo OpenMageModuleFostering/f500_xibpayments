@@ -25,6 +25,8 @@ class F500_Xibpayments_Model_System_Paymentoptions
             array('value'=>'creditcard', 'label'=>Mage::helper('xibpayments')->__('creditcard')),
             array('value'=>'ideal', 'label'=>Mage::helper('xibpayments')->__('ideal')),
             array('value'=>'paypal', 'label'=>Mage::helper('xibpayments')->__('paypal')),
+            array('value'=>'mistercash', 'label'=>Mage::helper('xibpayments')->__('mistercash')),
+            array('value'=>'giropay', 'label'=>Mage::helper('xibpayments')->__('giropay')),
         );
     }
 }

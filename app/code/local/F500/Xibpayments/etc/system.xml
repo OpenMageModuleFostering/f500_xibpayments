@@ -48,16 +48,6 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </title>
-                        <!-- <gateway_version translate="label">
-                            <label>Version</label>
-                            <frontend_type>select</frontend_type>
-                            <comment>Gateway version</comment>
-                            <source_model>xibpayments/system_gatewayversion</source_model>
-                            <sort_order>9</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </gateway_version> -->
                         <transaction_type translate="label">
                             <label>Modus</label>
                             <frontend_type>select</frontend_type>
@@ -85,10 +75,10 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                        </password_key>
+                        </password_key>                        
                         <options translate="label">
                             <label>Payment Option</label>
-                            <frontend_type>select</frontend_type>
+                            <frontend_type>multiselect</frontend_type>
                             <comment>Link directly to a payment option</comment>
                             <source_model>xibpayments/system_paymentoptions</source_model>
                             <sort_order>13</sort_order>
@@ -96,6 +86,47 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </options>
+                        <title_creditcard translate="label">
+                            <label>Translation creditcard</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title_creditcard>
+                        <title_ideal translate="label">
+                            <label>Translation ideal</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>16</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title_ideal>
+                        <title_paypal translate="label">
+                            <label>Translation paypal</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>17</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title_paypal>
+                        <title_mistercash translate="label">
+                            <label>Translation mistercash</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>18</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title_mistercash>
+                        <title_giropay translate="label">
+                            <label>Translation giropay</label>
+                            <frontend_type>text</frontend_type>
+		                    <comment><![CDATA[Descriptions to show the customer in the checkout screen. Leave empty for default names.]]></comment>
+                            <sort_order>19</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title_giropay>                                                
                         <order_description translate="label">
                             <label>Order description</label>
                             <frontend_type>text</frontend_type>

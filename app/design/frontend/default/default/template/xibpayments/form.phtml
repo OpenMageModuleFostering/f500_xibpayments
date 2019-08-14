@@ -16,12 +16,55 @@
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
+$banks = $this->getBanks();
+$_code = $this->getMethodCode();
+
+
+$options = $this->getEnabledOptions();
+
+$selected_option = $this->getInfoData('xibpayments_option');
+$selected_bank = $this->getInfoData('xibpayments_bank');
+
+if ( in_array('', $options) ) {
 ?>
 <fieldset class="form-list">
-    <?php $_code=$this->getMethodCode() ?>
     <ul id="payment_form_<?php echo $_code ?>" style="display:none">
         <li>
             <?php echo $this->__('You will be redirected to Xib|payments, our payment processor, after you place the order.') ?>
         </li>
     </ul>
 </fieldset>
+<?
+} else {
+?>
+<fieldset class="form-list" onclick="document.getElementById('p_method_xibpayments').checked = true;payment.switchMethod('xibpayments');">
+    <ul id="payment_form_<?php echo $_code ?>">
+    <?php
+        foreach ( $options as $option ) {
+    ?>
+        <li>
+            <?php 
+                echo '<label><input type="radio" id="p_method_xibpayments_option_' . $option . '" name="payment[xibpayments_option]" value="' . $option . '" ' . ( ($selected_option == $option)||(count($options)==1) ? 'checked="checked"' : '') . '> ' . ( '' !== ($optiontitle = $this->getOptionTitle($option)) ? $optiontitle : $this->__($option)) . '</label>'; 
+                if ( $option == 'ideal' ) {
+                    $result = ' <select name="payment[xibpayments_bank]" onchange="document.getElementById(\'p_method_xibpayments\').checked = true;document.getElementById(\'p_method_xibpayments_option_' . $option . '\').checked = true; payment.switchMethod(\'xibpayments\');">';
+                    $result .= '<option>' . $this->__('Select your bank') . '</option>';
+                    foreach ( $banks as $bankcode => $bankname ) {
+                        if ( $bankcode === '-' ) {
+                            $result .= '<option value="">------' . $this->__('Additional banks') . '------</option>';
+                        } else {
+                            $result .= '<option value="' . $bankcode . '" ' . ( $selected_bank == $bankcode ? 'selected="selected"' : '' ) . '>' . $this->__($bankname) . '</option>';
+                        }
+                    }            
+                    $result .= '</select>';
+                    echo  $result;
+                }
+            ?>
+        </li>
+    <?php            
+        }
+    ?>        
+    </ul>
+</fieldset>
+<?
+}
+?>

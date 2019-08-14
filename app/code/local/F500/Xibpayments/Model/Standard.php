@@ -25,10 +25,8 @@ class F500_Xibpayments_Model_Standard extends Mage_Payment_Model_Method_Abstract
     /**
      * Local testing or Live URL
      */
-//    protected $_url_v1='http://cardgateplus.loc/secure/';
-//    protected $_url_v1='https://www.cardgateplus.com/secure/';
-    protected $_url_v2='https://gateway.cardgateplus.com/secure/';
-
+//    protected $_url='http://cardgateplus.loc/secure/';
+    protected $_url='https://gateway.cardgateplus.com/';
 
     /**
      * Availability options
@@ -74,7 +72,7 @@ class F500_Xibpayments_Model_Standard extends Mage_Payment_Model_Method_Abstract
         return $this->getCheckout()->getQuote();
     }
 
-    /*validate the currency code is avaialable to use for xibpayments or not*/
+    /* validate the currency code is avaialable to use for xibpayments or not */
     public function validate()
     {
         parent::validate();
@@ -124,13 +122,23 @@ class F500_Xibpayments_Model_Standard extends Mage_Payment_Model_Method_Abstract
             $b = $this->getQuote()->getBillingAddress();
         }
 
-
-		//check if site_id and control_url are not empty
+        $info = $this->getQuote()->getPayment();
+        $option = $info->getData('cardgate_option');
+        switch ( $option ) {
+        case 'ideal':
+            $suboption = $info->getData('cardgate_bank');
+            break;
+        default:
+            $suboption = '';
+            break;
+        }
+        
+        //check if site_id and control_url are not empty
         //getQuoteCurrencyCode
         $currency_code = $this->getQuote()->getBaseCurrencyCode();
         $sArr = array(
-            'siteid'           	=> $this->getConfigData('site_id'),
-            'ref'           	=> $this->getCheckout()->getLastRealOrderId(),
+            'siteid'            => $this->getConfigData('site_id'),
+            'ref'               => $this->getCheckout()->getLastRealOrderId(),
             'first_name'        => $a->getFirstname(),
             'last_name'         => $a->getLastname(),
             'email'             => $a->getQuote()->getCustomer()->getEmail(),
@@ -139,8 +147,9 @@ class F500_Xibpayments_Model_Standard extends Mage_Payment_Model_Method_Abstract
             'country_code'      => $a->getCountry(),
             'postal_code'       => $a->getPostcode(),
             'phone_number'      => $a->getTelephone(),
-            'option'       		=> $this->getConfigData('options'),
-            'currency'       	=> $currency_code
+            'option'            => $option,
+            'suboption'         => $suboption,
+            'currency'          => $currency_code
         );
 
         if ( $this->isTest() || $this->isDebug() ) {
@@ -150,8 +159,8 @@ class F500_Xibpayments_Model_Standard extends Mage_Payment_Model_Method_Abstract
 
             if ( $this->isDebug() ) {
                 $sArr = array_merge($sArr, array(
-                        'debug'      => '1'
-                    ));
+                    'debug'      => '1'
+                ));
             }
         }
 
@@ -167,7 +176,7 @@ class F500_Xibpayments_Model_Standard extends Mage_Payment_Model_Method_Abstract
         $rArr = array();
         foreach ($sArr as $k=>$v) {
             /*
-            replacing & char with and. otherwise it will break the post
+            qreplacing & char with and. otherwise it will break the post
             */
             $value =  str_replace("&","and",$v);
             $rArr[$k] =  $value;
@@ -182,17 +191,7 @@ class F500_Xibpayments_Model_Standard extends Mage_Payment_Model_Method_Abstract
 
     public function getXibpaymentsUrl()
     {
-        /*
-        // No version select in Xib|payments
-        
-        if ( $this->getConfigData('gateway_version') == 2 ) {
-            $url = $this->_url_v2;
-        } else {
-            $url = $this->_url_v1;
-        }
-        */
-    
-        return $this->_url_v2;
+        return $this->_url;
     }
 
 
