@@ -123,10 +123,10 @@ class F500_Xibpayments_Model_Standard extends Mage_Payment_Model_Method_Abstract
         }
 
         $info = $this->getQuote()->getPayment();
-        $option = $info->getData('cardgate_option');
+        $option = $info->getData('xibpayments_option');
         switch ( $option ) {
         case 'ideal':
-            $suboption = $info->getData('cardgate_bank');
+            $suboption = $info->getData('xibpayments_bank');
             break;
         default:
             $suboption = '';
