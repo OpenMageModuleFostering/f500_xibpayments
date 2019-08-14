@@ -121,12 +121,28 @@
                         <title_giropay translate="label">
                             <label>Translation giropay</label>
                             <frontend_type>text</frontend_type>
-		                    <comment><![CDATA[Descriptions to show the customer in the checkout screen. Leave empty for default names.]]></comment>
                             <sort_order>19</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </title_giropay>                                                
+                        <title_directebanking translate="label">
+                            <label>Translation directebanking</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title_directebanking>                                                
+                        <title_webmoney translate="label">
+                            <label>Translation webmoney</label>
+                            <frontend_type>text</frontend_type>
+		                    <comment><![CDATA[Descriptions to show the customer in the checkout screen. Leave empty for default names.]]></comment>
+                            <sort_order>21</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title_webmoney>                                                
                         <order_description translate="label">
                             <label>Order description</label>
                             <frontend_type>text</frontend_type>

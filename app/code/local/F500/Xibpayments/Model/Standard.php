@@ -147,12 +147,12 @@ class F500_Xibpayments_Model_Standard extends Mage_Payment_Model_Method_Abstract
             'country_code'      => $a->getCountry(),
             'postal_code'       => $a->getPostcode(),
             'phone_number'      => $a->getTelephone(),
-            'option'            => $option,
-            'suboption'         => $suboption,
             'currency'          => $currency_code
         );
 
         if ( $this->isTest() || $this->isDebug() ) {
+            $hash_prefix = 'TEST';
+        
             $sArr = array_merge($sArr, array(
                     'test'      => '1'
                 ));
@@ -162,6 +162,12 @@ class F500_Xibpayments_Model_Standard extends Mage_Payment_Model_Method_Abstract
                     'debug'      => '1'
                 ));
             }
+        } else {
+            $hash_prefix = '';
+            $sArr = array_merge($sArr, array(
+                    'option'            => $option,
+                    'suboption'         => $suboption,                    
+                ));
         }
 
 		$amount = ($a->getBaseSubtotal()+$b->getBaseSubtotal())-($a->getBaseDiscountAmount()+$b->getBaseDiscountAmount());
@@ -169,7 +175,7 @@ class F500_Xibpayments_Model_Standard extends Mage_Payment_Model_Method_Abstract
 		$sArr = array_merge($sArr, array(
                 'description'   => str_replace('%id%',$this->getCheckout()->getLastRealOrderId(),$this->getConfigData('order_description')),
 				'amount'        => $grandTotalCents,
-				'hash'		    => md5($this->getConfigData('site_id') . $grandTotalCents . $sArr['ref'] . $this->getConfigData('password_key'))
+                'hash'          => md5( $hash_prefix . $this->getConfigData('site_id') . $grandTotalCents . $sArr['ref'] . $this->getConfigData('password_key'))
 			));
 		
 

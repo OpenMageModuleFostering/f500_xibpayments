@@ -25,6 +25,7 @@ class F500_Xibpayments_Block_Form extends Mage_Payment_Block_Form
         '0721' => 'ING',
         '0021' => 'Rabobank',
         '0751' => 'SNS Bank',
+        '0511' => 'Triodos Bank',        
         '-'    => '',
         '0761' => 'ASN Bank',
         '0771' => 'SNS Regio Bank',

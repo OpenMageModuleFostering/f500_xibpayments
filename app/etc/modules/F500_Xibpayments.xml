@@ -12,7 +12,7 @@
                 <Mage_Payment />
             </depends>
 <!-- declare module's version information for database updates -->
-            <version>1.0.5</version>
+            <version>1.0.6</version>
         </F500_Xibpayments>
     </modules>
 </config>
