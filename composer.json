@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/F500_Xibpayments",
+    "name": "OpenMageModuleFostering\/F500_Xibpayments",
     "type": "magento-module",
     "license": "OSL-v3.0",
     "homepage": "",
     "description": "Xib payments",
     "authors": [
-    {
-        "name": "Ramon de la Fuente",
-        "email": "ramon@future500.nl"
-    }
-],
+        {
+            "name": "Ramon de la Fuente",
+            "email": "ramon@future500.nl"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
